@@ -3,6 +3,12 @@ verkur3
 
 GUI útgáfa af Verki
 
+Hópur:
+* Bragi Bergþórsson - 8979876 - bragi14@ru.is
+* Magnús Norðdahl - 6968749 - magnusn06@ru.is
+* Ólafur Kári Sigurbjörnsson - 6903689 - olafurks10@ru.is
+* Rakel Ýr Káradóttir - 8663777 - rakel13@ru.is
+
 # Skil 3
 
 Í þessari útgáfu á að skrifa gluggaforrit í Qt.
