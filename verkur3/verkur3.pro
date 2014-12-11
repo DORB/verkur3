@@ -13,8 +13,24 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    comparer.cpp \
+    computer.cpp \
+    database.cpp \
+    person.cpp \
+    relation.cpp \
+    repository.cpp \
+    service.cpp \
+    utilities.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    comparer.h \
+    computer.h \
+    database.h \
+    person.h \
+    relation.h \
+    repository.h \
+    service.h \
+    utilities.h
 
 FORMS    += mainwindow.ui
