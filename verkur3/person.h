@@ -19,6 +19,8 @@ public:
     string getLName() const;
     string getSex() const;
     string getNationality() const;
+    bool contains(string str);
+    string toString();
 private:
     int pid;
     int birth_year;

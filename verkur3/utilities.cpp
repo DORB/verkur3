@@ -1,5 +1,6 @@
 #include "utilities.h"
 
+
 namespace utils {
     string str2upper(string str)
     {
@@ -45,6 +46,27 @@ namespace utils {
         }
 
         str = output;
+    }
+
+    QSqlDatabase getDatabaseConnection()
+    {
+        QString connectionName = "PersonConnection";
+
+        QSqlDatabase db;
+
+        if(QSqlDatabase::contains(connectionName))
+        {
+            db = QSqlDatabase::database(connectionName);
+        }
+        else
+        {
+            db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+            db.setDatabaseName("verkur.sqlite");
+
+            db.open();
+        }
+
+        return db;
     }
 }
 

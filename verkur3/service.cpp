@@ -33,6 +33,11 @@ void Service::del(const Person& p)
     repository.del(p);
 }
 
+PersonContainer Service::getAllProgrammers(QString sortString)
+{
+    return repository.getAllProgrammers(sortString);
+}
+
 void Service::del(const Computer& c)
 {
     repository.del(c);

@@ -1,4 +1,5 @@
 #include "person.h"
+#include "utilities.h"
 
 Person::Person()
 {
@@ -33,6 +34,24 @@ ostream& operator <<(ostream& out, const Person& listed)
              << endl;
 
     return out;
+}
+
+string Person::toString()
+{
+    return this->getFName() + " " + this->getLName() + " " + this->getNationality() + " " + utils::int2str(this->getBY()) + " " + utils::int2str(this->getDY());
+}
+
+bool Person::contains(string str)
+{
+    if(str == "")
+        return true;
+
+    string searchStringToLower = utils::str2lower(str);
+
+    if(utils::str2lower(this->toString()).find(searchStringToLower) != string::npos)
+        return true;
+    else
+        return false;
 }
 
 // Gettarar:

@@ -38,13 +38,14 @@ public:
     void list(CompContainer& c);
     void del(const Person& p);
     void del(const Computer &c);
-    PersonContainer people;
+    PersonContainer programmers;
     RelContainer relations1;
     CompContainer computers;
     void marry(const int &p_ID, const int &c_ID);
     RelContainer get_rel(const marriage& m);
+    PersonContainer getAllProgrammers(QString sortString);
 private:
-    Database db;
+    QSqlDatabase db;
 };
 
 

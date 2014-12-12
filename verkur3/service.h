@@ -25,6 +25,7 @@ public:
     CompContainer find_p(string str, const CompContainer &c, bool &exists);
     PersonContainer sort_list(const int &sort_after, const bool& desc, const int& temp);
     CompContainer sort_list(const int &sort_after, const bool &desc, const bool& temp);
+    PersonContainer getAllProgrammers(QString sortString);
 private:
     Repository repository;
     Database db;

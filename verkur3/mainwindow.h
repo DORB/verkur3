@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <service.h>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -15,8 +17,22 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_input_search_programmers_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
+
+    Service service;
+
+    PersonContainer programmers;
+    PersonContainer currentlyDisplayedProgs;
+    CompContainer computers;
+    CompContainer currentlyDisplayedComps;
+    void displayAllProgrammers();
+    void getAllProgrammers(QString searchString);
+
+    QString currentSortCol;
 };
 
 #endif // MAINWINDOW_H

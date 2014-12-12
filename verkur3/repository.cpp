@@ -6,6 +6,7 @@
 // og populatear vektor með þessum persónum
 Repository::Repository()
 {
+    /*
     if(db.open())
     {
         QSqlQuery query;
@@ -28,7 +29,7 @@ Repository::Repository()
 
             Person p = Person(p_id, names[0], names[1], birth_year, death_year, sex, nationality);
 
-            people.push_back(p);
+            programmers.push_back(p);
         }
 
         db.close();
@@ -60,6 +61,9 @@ Repository::Repository()
         }
         db.close();
     }
+    */
+
+    db = utils::getDatabaseConnection();
 }
 
 // add function
@@ -78,7 +82,7 @@ void Repository::add(const Person& p)
         QString qinsert = QString::fromStdString(insert);
 
         query.exec(qinsert);
-        people.push_back(p);
+        programmers.push_back(p);
     }
     else
     {
@@ -134,7 +138,7 @@ void Repository::del(const Person& p)
 
     db.close();
 
-    list(people);
+    list(programmers);
 }
 
 void Repository::del(const Computer& c)
@@ -221,7 +225,7 @@ void Repository::list(PersonContainer& p)
 {
     Repository temp;
 
-    p = temp.people;
+    p = temp.programmers;
 }
 
 void Repository::list(CompContainer& c)
@@ -229,6 +233,30 @@ void Repository::list(CompContainer& c)
     Repository temp;
 
     c = temp.computers;
+}
+
+PersonContainer Repository::getAllProgrammers(QString sortString)
+{
+    PersonContainer results;
+
+    QSqlQuery query(db);
+    // query.prepare(QString("SELECT * FROM Programmers ORDER BY %1").arg(sortString));
+    query.exec("SELECT * FROM Programmers");
+
+    while(query.next())
+    {
+        int id = query.value("ID").toInt();
+        string firstName = query.value("first_name").toString().toStdString();
+        string lastName = query.value("last_name").toString().toStdString();
+        string nationality = query.value("nationality").toString().toStdString();
+        int born = query.value("birth_year").toInt();
+        int dead = query.value("death_year").toInt();
+        string sex = query.value("sex").toString().toStdString();
+
+        results.push_back(Person(id, firstName, lastName, born, dead, sex, nationality));
+    }
+
+    return results;
 }
 
 void Repository::marry(const int& p_ID, const int& c_ID)

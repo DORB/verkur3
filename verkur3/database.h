@@ -2,6 +2,7 @@
 #define DATABASE_H
 
 #include <QtSql>
+#include <QDebug>
 
 class Database
 {
