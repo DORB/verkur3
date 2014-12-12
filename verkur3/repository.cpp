@@ -239,21 +239,30 @@ PersonContainer Repository::getAllProgrammers(QString sortString)
 {
     PersonContainer results;
 
+    /*
     QSqlQuery query(db);
-    // query.prepare(QString("SELECT * FROM Programmers ORDER BY %1").arg(sortString));
-    query.exec("SELECT * FROM Programmers");
+    query.prepare(QString("SELECT * FROM Programmers ORDER BY %1").arg(sortString));
+    query.exec();
+    */
 
-    while(query.next())
+    if(db.open())
     {
-        int id = query.value("ID").toInt();
-        string firstName = query.value("first_name").toString().toStdString();
-        string lastName = query.value("last_name").toString().toStdString();
-        string nationality = query.value("nationality").toString().toStdString();
-        int born = query.value("birth_year").toInt();
-        int dead = query.value("death_year").toInt();
-        string sex = query.value("sex").toString().toStdString();
+        QSqlQuery query;
+        qDebug() << "Databeisinn er opinn" << endl;
+        query.exec("SELECT * FROM Programmers");
 
-        results.push_back(Person(id, firstName, lastName, born, dead, sex, nationality));
+        while(query.next())
+        {
+            int id = query.value("ID").toInt();
+            string firstName = query.value("first_name").toString().toStdString();
+            string lastName = query.value("last_name").toString().toStdString();
+            string nationality = query.value("nationality").toString().toStdString();
+            int born = query.value("birth_year").toInt();
+            int dead = query.value("death_year").toInt();
+            string sex = query.value("sex").toString().toStdString();
+
+            results.push_back(Person(id, firstName, lastName, born, dead, sex, nationality));
+        }
     }
 
     return results;

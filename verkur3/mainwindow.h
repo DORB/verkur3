@@ -25,14 +25,15 @@ private:
 
     Service service;
 
-    PersonContainer programmers;
+    PersonContainer currentProgrammers;
     PersonContainer currentlyDisplayedProgs;
-    CompContainer computers;
+    CompContainer currentComputers;
     CompContainer currentlyDisplayedComps;
-    void displayAllProgrammers();
-    void getAllProgrammers(QString searchString);
 
-    QString currentSortCol;
+    void displayAllProgrammers();
+    void getAllProgrammers();
+
+    QString currentProgrammerSortCol;
 };
 
 #endif // MAINWINDOW_H

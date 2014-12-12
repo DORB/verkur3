@@ -12,7 +12,7 @@
 #include <sstream>
 #include "person.h"
 #include "computer.h"
-#include "database.h"
+// #include "database.h"
 #include "relation.h"
 #include "utilities.h"
 

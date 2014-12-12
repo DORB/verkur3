@@ -28,7 +28,7 @@ public:
     PersonContainer getAllProgrammers(QString sortString);
 private:
     Repository repository;
-    Database db;
+    QSqlDatabase db;
 };
 
 #endif // SERVICE_H

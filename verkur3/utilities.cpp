@@ -63,7 +63,10 @@ namespace utils {
             db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
             db.setDatabaseName("verkur.sqlite");
 
-            db.open();
+            if(db.open())
+            {
+                qDebug() << "Fer inn i gagnagrunninn baby" << endl;
+            }
         }
 
         return db;

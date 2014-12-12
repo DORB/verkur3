@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->input_search_programmers->setPlaceholderText("Search programmers...");
 
-    currentSortCol = "ID";
+    currentProgrammerSortCol = "ID";
 
-    getAllProgrammers(currentSortCol);
+    getAllProgrammers();
 }
 
 MainWindow::~MainWindow()
@@ -24,16 +24,16 @@ MainWindow::~MainWindow()
 void MainWindow::displayAllProgrammers()
 {
     ui->table_programmers->clearContents();
-    ui->table_programmers->setRowCount(programmers.size());
+    ui->table_programmers->setRowCount(currentProgrammers.size());
 
     currentlyDisplayedProgs.clear();
 
     string searchString = ui->input_search_programmers->text().toStdString();
-    qDebug() << programmers.size() << endl;
+    qDebug() << currentProgrammers.size() << endl;
 
-    for(unsigned int i = 0; i < programmers.size(); i++)
+    for(unsigned int i = 0; i < currentProgrammers.size(); i++)
     {
-        Person currentProgrammer = programmers[i];
+        Person currentProgrammer = currentProgrammers[i];
 
         if(currentProgrammer.contains(searchString))
         {
@@ -59,9 +59,9 @@ void MainWindow::displayAllProgrammers()
     ui->table_programmers->setRowCount(currentlyDisplayedProgs.size());
 }
 
-void MainWindow::getAllProgrammers(QString searchString)
+void MainWindow::getAllProgrammers()
 {
-    service.getAllProgrammers(searchString);
+    currentProgrammers = service.getAllProgrammers(currentProgrammerSortCol);
     displayAllProgrammers();
 }
 
