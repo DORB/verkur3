@@ -66,6 +66,7 @@ Repository::Repository()
     db = utils::getDatabaseConnection();
 }
 
+/*
 // add function
 void Repository::add(const Person& p)
 {
@@ -235,39 +236,6 @@ void Repository::list(CompContainer& c)
     c = temp.computers;
 }
 
-PersonContainer Repository::getAllProgrammers(QString sortString)
-{
-    PersonContainer results;
-
-    /*
-    QSqlQuery query(db);
-    query.prepare(QString("SELECT * FROM Programmers ORDER BY %1").arg(sortString));
-    query.exec();
-    */
-
-    if(db.open())
-    {
-        QSqlQuery query;
-        qDebug() << "Databeisinn er opinn" << endl;
-        query.exec("SELECT * FROM Programmers");
-
-        while(query.next())
-        {
-            int id = query.value("ID").toInt();
-            string firstName = query.value("first_name").toString().toStdString();
-            string lastName = query.value("last_name").toString().toStdString();
-            string nationality = query.value("nationality").toString().toStdString();
-            int born = query.value("birth_year").toInt();
-            int dead = query.value("death_year").toInt();
-            string sex = query.value("sex").toString().toStdString();
-
-            results.push_back(Person(id, firstName, lastName, born, dead, sex, nationality));
-        }
-    }
-
-    return results;
-}
-
 void Repository::marry(const int& p_ID, const int& c_ID)
 {
     if(db.open())
@@ -292,4 +260,30 @@ void Repository::marry(const int& p_ID, const int& c_ID)
 
     db.close();
 }
+*/
 
+PersonContainer Repository::getAllProgrammers(QString sortString)
+{
+    PersonContainer results;
+
+    QSqlQuery query(db);
+    // query.prepare(QString("SELECT * FROM Programmers ORDER BY %1").arg(sortString));
+    query.exec("SELECT first_name FROM Programmers");
+
+    qDebug() << "Query is valid? " << query.isValid() << endl;
+
+    while(query.next())
+    {
+        int id = query.value("ID").toInt();
+        string firstName = query.value("first_name").toString().toStdString();
+        string lastName = query.value("last_name").toString().toStdString();
+        string nationality = query.value("nationality").toString().toStdString();
+        int born = query.value("birth_year").toInt();
+        int dead = query.value("death_year").toInt();
+        string sex = query.value("sex").toString().toStdString();
+
+        results.push_back(Person(id, firstName, lastName, born, dead, sex, nationality));
+    }
+
+    return results;
+}

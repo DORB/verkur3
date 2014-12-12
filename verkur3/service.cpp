@@ -5,6 +5,7 @@ Service::Service()
 {
 }
 
+/*
 // milliliður fyrir add function
 void Service::add(const Person& p)
 {
@@ -31,11 +32,6 @@ void Service::list(CompContainer& c)
 void Service::del(const Person& p)
 {
     repository.del(p);
-}
-
-PersonContainer Service::getAllProgrammers(QString sortString)
-{
-    return repository.getAllProgrammers(sortString);
 }
 
 void Service::del(const Computer& c)
@@ -160,4 +156,9 @@ CompContainer Service::sort_list(const int& sort_after, const bool& desc, const 
     sort(c_sorted.begin(), c_sorted.end(), c);
     return c_sorted;
 }
+*/
 
+PersonContainer Service::getAllProgrammers(QString sortString)
+{
+    return repository.getAllProgrammers(sortString);
+}

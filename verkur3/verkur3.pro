@@ -16,7 +16,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     comparer.cpp \
     computer.cpp \
-    database.cpp \
     person.cpp \
     relation.cpp \
     repository.cpp \
@@ -26,7 +25,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     comparer.h \
     computer.h \
-    database.h \
     person.h \
     relation.h \
     repository.h \

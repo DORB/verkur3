@@ -32,6 +32,7 @@ class Repository
 {
 public:
     Repository();
+    /*
     void add(const Person& p);
     void add(const Computer &c);
     void list(PersonContainer& p);
@@ -43,6 +44,7 @@ public:
     CompContainer computers;
     void marry(const int &p_ID, const int &c_ID);
     RelContainer get_rel(const marriage& m);
+    */
     PersonContainer getAllProgrammers(QString sortString);
 private:
     QSqlDatabase db;

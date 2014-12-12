@@ -26,16 +26,16 @@ namespace utils {
         return str;
     }
 
-    void trimeWS(string& str)
+    void trimWS(string& str)
     {
         stringstream ss;
         ss << str;
-        char nextin;
-        char last;
+        // char nextin;
+        // char last;
         string input, output;
         getline(ss, input);
 
-        for (int i = 0; i < strlen(input.c_str()); i++)
+        for (unsigned int i = 0; i < strlen(input.c_str()); i++)
         {
             if(input[i] != ' ')
             {
@@ -50,7 +50,7 @@ namespace utils {
 
     QSqlDatabase getDatabaseConnection()
     {
-        QString connectionName = "PersonConnection";
+        QString connectionName = "VerkurConnection";
 
         QSqlDatabase db;
 
@@ -61,12 +61,10 @@ namespace utils {
         else
         {
             db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
+            db = QSqlDatabase::addDatabase("QSQLITE");
             db.setDatabaseName("verkur.sqlite");
 
-            if(db.open())
-            {
-                qDebug() << "Fer inn i gagnagrunninn baby" << endl;
-            }
+            db.open();
         }
 
         return db;

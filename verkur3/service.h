@@ -5,12 +5,13 @@
 #include <QtSql>
 #include "person.h"
 #include "repository.h"
-#include "comparer.h"
+// #include "comparer.h"
 
 class Service
 {
 public:
     Service();
+    /*
     void add(const Person& p);
     void add(const Computer &c);
     void list(PersonContainer& p);
@@ -25,10 +26,11 @@ public:
     CompContainer find_p(string str, const CompContainer &c, bool &exists);
     PersonContainer sort_list(const int &sort_after, const bool& desc, const int& temp);
     CompContainer sort_list(const int &sort_after, const bool &desc, const bool& temp);
+    */
     PersonContainer getAllProgrammers(QString sortString);
 private:
     Repository repository;
-    QSqlDatabase db;
+    // QSqlDatabase db;
 };
 
 #endif // SERVICE_H

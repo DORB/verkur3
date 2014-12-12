@@ -29,7 +29,7 @@ void MainWindow::displayAllProgrammers()
     currentlyDisplayedProgs.clear();
 
     string searchString = ui->input_search_programmers->text().toStdString();
-    qDebug() << currentProgrammers.size() << endl;
+    qDebug() << "currentProgrammers.size() = " << currentProgrammers.size() << endl;
 
     for(unsigned int i = 0; i < currentProgrammers.size(); i++)
     {
